@@ -25,7 +25,7 @@ const app = new Vue({
       let posts = this.results;
 
       posts.map(post => {
-        post.image_url = post.image_url;
+        post.image_url = post.user.profile_image_url;
       });
 
       let i, j, chunkedArray = [], chunk = 4;
