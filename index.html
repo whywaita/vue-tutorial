@@ -14,9 +14,9 @@
           <div class="card-divider">
             {{ post.title }}
           </div>
-          <a :href="post.url" target="_blank"><img :src="post.image_url"></a>
+          <a :href="post.url" target="_blank"><img :src="post.image_url" width="200px" height="200px"></a>
           <div class="card-section">
-            <p>{{ post.rendered_body }}</p>
+            <p>{{ post.outline }}</p>
           </div>
         </div>
       </div>
