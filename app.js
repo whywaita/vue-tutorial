@@ -9,10 +9,10 @@ function cutSection (body) {
 };
 
 function cutTitle (title) {
-  if (title.length - 1 <= 50) {
+  if (title.length - 1 <= 35) {
     return title
   }
-  return title.substr(0, 49) + "..."
+  return title.substr(0, 35) + "..."
 };
 
 const app = new Vue({
