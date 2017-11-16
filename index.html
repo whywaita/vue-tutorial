@@ -2,20 +2,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello Vue</title>
-  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+  <script src="https://unpkg.com/vue@2.5.3/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-
   <div id="app">
-    {{ message }}
+    <div class="columns medium-3" v-for="result in results">
+      <div class="card">
+        <div class="card-divider">
+          {{ result.title }}
+        </div>
+        <div class="card-section">
+          <p>{{ result.rendered_body }}.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-  </script>
+  <script src="./app.js"></script>
 </body>
