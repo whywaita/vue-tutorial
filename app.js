@@ -15,6 +15,44 @@ function cutTitle (title) {
   return title.substr(0, 35) + "..."
 };
 
+Vue.component('item-list', {
+  props: ['results'],
+  template:`
+  <section>
+    <div class="row" v-for="posts in processedPosts">
+     <div class="columns medium-3 medium-6" v-for="post in posts">
+       <div class="card">
+         <div class="card-divider">
+           {{ post.title }}
+         </div>
+         <a :href="post.url" target="_blank"><img :src="post.image_url" width="200px" height="200px"></a>
+         <div class="card-section">
+           <p>{{ post.outline }}</p>
+         </div>
+       </div>
+     </div>
+    </div> 
+  </section>
+  `,
+  computed: {
+    processedPosts() {
+      let posts = this.results;
+
+      posts.map(post => {
+        post.image_url = post.user.profile_image_url;
+        post.outline = cutSection(post.rendered_body);
+        post.title = cutTitle(post.title);
+      });
+
+      let i, j, chunkedArray = [], chunk = 4;
+      for (i=0, j=0; i < posts.length; i += chunk, j++) {
+        chunkedArray[j] = posts.slice(i,i+chunk);
+      }
+      return chunkedArray;
+    }
+  }
+})
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -29,24 +67,6 @@ const app = new Vue({
       axios.get(url)
       .then(response => { this.results = response.data })
       .catch(error => { console.log(error);});
-    }
-  },
-  computed: {
-    processedPosts() {
-      let posts = this.results;
-
-      posts.map(post => {
-        post.image_url = post.user.profile_image_url;
-        post.outline = cutSection(post.rendered_body);
-        post.title = cutTitle(post.title);
-      });
-
-
-      let i, j, chunkedArray = [], chunk = 4;
-      for (i=0, j=0; i < posts.length; i += chunk, j++) {
-        chunkedArray[j] = posts.slice(i,i+chunk);
-      }
-      return chunkedArray;
     }
   }
 });

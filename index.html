@@ -7,20 +7,9 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <div id="app">
-    <div class="row" v-for="posts in processedPosts">
-      <div class="columns medium-3 medium-6" v-for="post in posts">
-        <div class="card">
-          <div class="card-divider">
-            {{ post.title }}
-          </div>
-          <a :href="post.url" target="_blank"><img :src="post.image_url" width="200px" height="200px"></a>
-          <div class="card-section">
-            <p>{{ post.outline }}</p>
-          </div>
-        </div>
-      </div>
-     </div>
+  <div class="container" id="app">
+    <h3 class="text-center">Qiita Article</h3>
+    <item-list :results="results"></item-list>
   </div>
 
   <script src="./app.js"></script>
