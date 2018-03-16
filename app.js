@@ -23,9 +23,9 @@ Vue.component('item-list', {
      <div class="columns medium-3 medium-6" v-for="post in posts">
        <div class="card">
          <div class="card-divider">
-           {{ post.title }}
+          <a :href="post.url" target="_blank">{{ post.title }}</a>
          </div>
-         <a :href="post.url" target="_blank"><img :src="post.image_url" width="200px" height="200px"></a>
+         <img :src="post.image_url" width="200px" height="200px">
          <div class="card-section">
            <p>{{ post.outline }}</p>
          </div>
