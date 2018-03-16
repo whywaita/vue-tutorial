@@ -25,7 +25,7 @@ Vue.component('item-list', {
          <div class="card-divider">
           <a :href="post.url" target="_blank">{{ post.title }}</a>
          </div>
-         <img :src="post.image_url" width="200px" height="200px">
+          <a :href='"http://qiita.com/" + post.user.id' ><img :src="post.image_url" width="200px" height="200px"></a>
          <div class="card-section">
            <p>{{ post.outline }}</p>
          </div>
